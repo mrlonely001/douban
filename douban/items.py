@@ -20,3 +20,4 @@ class MovieCommentItem(scrapy.Item):
     commenttime = scrapy.Field()
     votenum = scrapy.Field()
     conmment= scrapy.Field()
+    _id = scrapy.Field()
