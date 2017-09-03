@@ -61,7 +61,7 @@ class Got7Crawler(Spider):
             voteinfo = div.css("span.comment-vote span")
             votenum = voteinfo[0].css("::text").extract_first()
             conmment = div.css("p")[0].css("::text").extract_first()
-            print usrname + usraddr + starnum + commenttime + votenum + conmment
+            print (usrname + usraddr + starnum + commenttime + votenum + conmment)
             item = MovieCommentItem()
             item['usrname'] = usrname
             item['usraddr'] = usraddr
