@@ -12,3 +12,11 @@ class DoubanItem(scrapy.Item):
     # define the fields for your item here like:
     # name = scrapy.Field()
     pass
+
+class MovieCommentItem(scrapy.Item):
+    usrname = scrapy.Field()
+    usraddr = scrapy.Field()
+    starnum = scrapy.Field()
+    commenttime = scrapy.Field()
+    votenum = scrapy.Field()
+    conmment= scrapy.Field()
