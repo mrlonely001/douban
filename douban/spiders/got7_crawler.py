@@ -36,7 +36,7 @@ class Got7Crawler(Spider):
 
     def start_requests(self):
         proxyArr = self.getproxyfrommongo()
-        print "++++++++++"+len(proxyArr)+" proxy to use+++++++++++"
+        print "++++++++++"+str(len(proxyArr))+" proxy to use+++++++++++"
         root_url = "https://movie.douban.com/subject/26607693/comments?start=<pageth>&limit=20&sort=new_score&status=P"
         starturls = []
         for i in range(0,110):
