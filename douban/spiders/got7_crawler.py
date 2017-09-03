@@ -27,7 +27,7 @@ class Got7Crawler(Spider):
         db = client['proxy']
         coll = db['FreeProxyItem']
         proxyArr = []
-        for item in coll.find({"crawl_time":{"$gt":"2017-09-01 00:00:00"}}).sort("crawl_time", pymongo.DESCENDING):
+        for item in coll.find({"crawl_time":{"$gt":"2017-09-03 00:00:00"}}).sort("crawl_time", pymongo.DESCENDING):
             proxy = {}
             proxy['ip'] = item["ip"]
             proxy['port'] = item["port"]
@@ -36,6 +36,7 @@ class Got7Crawler(Spider):
 
     def start_requests(self):
         proxyArr = self.getproxyfrommongo()
+        print "++++++++++"+len(proxyArr)+" proxy to use+++++++++++"
         root_url = "https://movie.douban.com/subject/26607693/comments?start=<pageth>&limit=20&sort=new_score&status=P"
         starturls = []
         for i in range(0,110):
@@ -43,7 +44,7 @@ class Got7Crawler(Spider):
         for i in range(len(starturls)):
             if i==0:
                 continue
-            time.sleep(random.randint(5,20))
+            time.sleep(random.randint(1,5))
             proxy = random.choice(proxyArr)
             proxyStr = "http://" + proxy['ip'] + ":" + proxy['port']
             self.header['Referer'] = starturls[i-1]
